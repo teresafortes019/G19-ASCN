@@ -1,3 +1,9 @@
 ---
 # Playbook to deploy Ghost and its components
-# TO DO
+
+
+- name: Deploy Ghost APP
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - role: deploy-ghost
