@@ -1,0 +1,35 @@
+---
+# Deployment for deploying Ghost
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost
+  namespace: ascn-cluster
+  labels:
+    app: ghost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+      - name: ghost
+        image: ghost:5.14.1
+        env: #Mudar isto de acordo as specs do ghost  
+        - name: DB_HOST
+          value: mysql-service
+        - name: DB_DATABASE
+          value: swap
+        - name: DB_USERNAME
+          value: swapuser
+        - name: DB_PASSWORD
+          value: "123456" # Use secret object in real usage
+        - name: MIGRATE
+          value: "true"
+        ports:
+        - containerPort: 8000
