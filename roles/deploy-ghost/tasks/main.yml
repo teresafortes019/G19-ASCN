@@ -1,7 +1,9 @@
 ---
 
+- name: Ghost Deployment
+  shell: kubectl apply -f roles/deploy-ghost/templates/ghost-deployment.yml
+
 - name: Service Ghost
   shell: kubectl apply -f roles/deploy-ghost/templates/ghost-service.yml
 
-- name: Ghost Deployment
-  shell: kubectl apply -f roles/deploy-ghost/templates/ghost-deployment.yml
+

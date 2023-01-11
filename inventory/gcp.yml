@@ -18,9 +18,5 @@ all:
   ghost_ip: <GHOST_SERVICE_IP>     # Needs to be updated
   ghost_port: <GHOST_PORT>         # Needs to be updated
 
-  db_name: ghostDB               # Needs to be updated
-  db_user: ghost               # Needs to be updated
-  db_password: wordpass       # Needs to be updated
-
   # Additional variables
   # ...

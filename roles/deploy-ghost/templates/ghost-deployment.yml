@@ -21,19 +21,17 @@ spec:
         image: ghost:5.14.1
         env: #Mudar isto de acordo as specs do ghost  
         - name: url
-          value: "http://localhost:80"
+          value: "http://35.202.43.161:80"
         #DB
-        - name: database__database
-          value: "{{ db_name }}"
         - name: database__client
-          value: "mysql"
+          value: mysql
         - name: database__connection__host
-          value: "mysql-service"
+          value: mysql-service
+        - name: database__connection__database
+          value: ghost
         - name: database__connection__user
-          value: "{{ db_user }}"
+          value: admin
         - name: database__connection__password
-          value: "{{ db_password }}"
-        - name: database__connection__port
-          value: "3306"
+          value: admin
         ports:
-        - containerPort: 80
+        - containerPort: 2368

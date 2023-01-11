@@ -23,17 +23,18 @@ spec:
       - name: mysql
         image: mysql:latest
         env: # The variables below could be set on a ConfigMap object
-        - name: MYSQL_ALLOW_EMPTY_PASSWORD
-          value: "true"
         - name: MYSQL_DATABASE
-          value: "{{ db_name }}"
+          value: ghost
         - name: MYSQL_USER
-          value: "{{ db_user }}"
+          value: admin
         - name: MYSQL_PASSWORD
-          value: "{{ db_password }}" # Use Secret object in real usage
+          value: admin # Use Secret object in real usage
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
+        ports:
+        - containerPort: 3306
+
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
