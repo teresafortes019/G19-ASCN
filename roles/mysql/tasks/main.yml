@@ -1,11 +1,11 @@
 ---
 
 - name: MySQL PVC
-  shell: kubectl apply -f roles/mysql/tasks/mysql-pvc.yml
+  shell: kubectl apply -f roles/mysql/templates/mysql-pvc.yml
 
 - name: MySQL Deployment
-  shell: kubectl apply -f roles/mysql/tasks/mysql-deployment.yml
+  shell: kubectl apply -f roles/mysql/templates/mysql-deployment.yml
 
 - name: Service MySQL
-  shell: kubectl apply -f roles/mysql/tasks/mysql-service.yml
+  shell: kubectl apply -f roles/mysql/templates/mysql-service.yml
 

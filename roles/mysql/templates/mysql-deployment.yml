@@ -26,11 +26,11 @@ spec:
         - name: MYSQL_ALLOW_EMPTY_PASSWORD
           value: "true"
         - name: MYSQL_DATABASE
-          value: swap
+          value: "{{ db_name }}"
         - name: MYSQL_USER
-          value: swapuser
+          value: "{{ db_user }}"
         - name: MYSQL_PASSWORD
-          value: "123456" # Use Secret object in real usage
+          value: "{{ db_password }}" # Use Secret object in real usage
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
