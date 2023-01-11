@@ -7,7 +7,7 @@ all:
   gcp_auth_kind: serviceaccount                         # Do not change
   gcp_cred_file: ascn-ghost-369310-eab10dfdc308.json    # Path to service account keys (json file downloaded from GCP)
 
-  gcp_zone: us-central1-a
+  gcp_zone: us-central1-a               # Can be changed if necessary
   gcp_image_type: ubuntu_containerd
   gcp_machine_type: e2-small            # Can be changed if necessary
   gcp_disk_size_gb: 100                 # Can be changed if necessary

@@ -1,8 +1,14 @@
 ---
 # Playbook to deploy Ghost and its components
-
-- name: Deploy Ghost APP
+- name: Deploy MySQL DB
   hosts: localhost
   gather_facts: false
   roles:
     - mysql
+
+
+# - name: Deploy Ghost APP
+#  hosts: localhost
+#  gather_facts: false
+#  roles:
+#    - deploy-ghost
