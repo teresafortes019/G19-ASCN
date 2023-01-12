@@ -32,6 +32,6 @@ spec:
         - name: database__connection__user
           value: admin
         - name: database__connection__password
-          value: admin
+          value: "$PASSWORD"
         ports:
         - containerPort: 2368

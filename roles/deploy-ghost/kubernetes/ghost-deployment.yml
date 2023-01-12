@@ -21,7 +21,7 @@ spec:
         image: ghost:5.14.1
         env: #Mudar isto de acordo as specs do ghost  
         - name: url
-          value: http://35.239.117.226:80/
+          value: http://35.239.235.202:80/
         #DB
         - name: database__client
           value: mysql
@@ -32,6 +32,6 @@ spec:
         - name: database__connection__user
           value: admin
         - name: database__connection__password
-          value: admin
+          value: "$PASSWORD"
         ports:
         - containerPort: 2368

@@ -9,5 +9,7 @@
 - name: Deploy Ghost APP
   hosts: localhost
   gather_facts: false
+  vars_files:
+    - secrets.yml
   roles:
     - deploy-ghost

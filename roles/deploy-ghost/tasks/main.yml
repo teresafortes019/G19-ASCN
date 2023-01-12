@@ -21,7 +21,10 @@
     dest: roles/deploy-ghost/kubernetes/ghost-deployment.yml
 
 - name: Ghost Deployment
-  shell: kubectl apply -f roles/deploy-ghost/kubernetes/ghost-deployment.yml
+  shell: |
+    export PASSWORD={{ admin_password }}
+    envsubst < roles/deploy-ghost/kubernetes/ghost-deployment.yml | kubectl apply -f -
+    unset PASSWORD
 
 
 - name: Get MySQL Pod Name
@@ -29,14 +32,11 @@
   register: mysql_pod_name
   until: mysql_pod_name.stdout != ""
   
-- name: Wait for MySQL to be ready
-  shell: kubectl exec {{ mysql_pod_name.stdout }} -- mysqladmin ping --silent
-  register: mysql_ping
-  until: mysql_ping.stdout != ""
-  retries: 10
-  delay: 10
+- name: Wait for MySQL Users table to be ready
+  shell: kubectl exec {{ mysql_pod_name.stdout }} -- mysql --user="admin" --password="{{admin_password}}" --database="ghost" --execute="select * from users;"
+  register: mysql_users_table
 
 - name: Create admin inside DB
-  shell: kubectl exec {{ mysql_pod_name.stdout }} -- mysql --user="admin" --password="admin" --database="ghost" --execute="update users set name='{{ ghost_user }}', password='{{ ghost_password }}', email='{{ ghost_email }}', status='active' where id=1;"
+  shell: kubectl exec {{ mysql_pod_name.stdout }} -- mysql --user="admin" --password="{{admin_password}}" --database="ghost" --execute="update users set name='{{ ghost_user }}', password='{{ ghost_password }}', email='{{ ghost_email }}', status='active' where id=1;"
   
 
