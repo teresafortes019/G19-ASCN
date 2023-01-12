@@ -49,3 +49,8 @@ spec:
           value: "Mailtrap"
         ports:
         - containerPort: 2368
+        resources:
+          requests: 
+            cpu: "100m" # Make sure that at least 1 core is available for requests
+          limits:
+            cpu: "100m" # 1 core upper limit

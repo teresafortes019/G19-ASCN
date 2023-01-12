@@ -2,11 +2,8 @@
 - name: Scale Ghost MySQL replicas
   hosts: localhost
   vars:
-    mysql_replicas: 4
+    mysql_replicas: 2
   tasks:
   - name: Scale up MySQL replicas
-    command: kubectl scale --replicas={{ mysql_replicas }} deployment/mysql-deployment
-    when: mysql_replicas > current_replicas
-  - name: Scale down MySQL replicas
-    command: kubectl scale --replicas={{ mysql_replicas }} deployment/mysql-deployment
-    when: mysql_replicas < current_replicas
+    command: kubectl scale --replicas={{ mysql_replicas }} deployment/ghost-deployment
+    
