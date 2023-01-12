@@ -21,7 +21,7 @@ spec:
         image: ghost:5.14.1
         env: #Mudar isto de acordo as specs do ghost  
         - name: url
-          value: http://35.239.235.202:80/
+          value: http://34.134.219.133:80/
         #DB
         - name: database__client
           value: mysql
@@ -33,5 +33,19 @@ spec:
           value: admin
         - name: database__connection__password
           value: "$PASSWORD"
+        - name: mail__transport
+          value: "SMTP"
+        - name: mail__from
+          value: "ASCN 19 <ascn@example.com>"
+        - name: mail__options__host
+          value: "smtp.mailtrap.io"
+        - name: mail__options__port
+          value: "2525"
+        - name: mail__options__auth__user
+          value: "b3edca30dbbb47"
+        - name: mail__options__auth__pass
+          value: "$PASSWORD_MAIL"
+        - name: mail__options__service
+          value: "Mailtrap"
         ports:
         - containerPort: 2368

@@ -20,12 +20,15 @@
     src: ghost-deployment.yml
     dest: roles/deploy-ghost/kubernetes/ghost-deployment.yml
 
+
+
 - name: Ghost Deployment
   shell: |
     export PASSWORD={{ admin_password }}
+    export PASSWORD_MAIL={{ mail_password }}
     envsubst < roles/deploy-ghost/kubernetes/ghost-deployment.yml | kubectl apply -f -
     unset PASSWORD
-
+    unset PASSWORD_MAIL
 
 - name: Get MySQL Pod Name
   shell: kubectl get pods -l app=mysql -o jsonpath='{.items[0].metadata.name}'
