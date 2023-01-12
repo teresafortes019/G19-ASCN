@@ -1,0 +1,7 @@
+---
+
+- name: Undeploy MySQL PVC
+  shell: kubectl delete pvc mysql-pv-claim
+
+- name: Undeploy MySQL PV
+  shell: kubectl get pv | grep pvc | awk '{print $1}' | xargs kubectl delete pv

@@ -28,6 +28,13 @@
   shell: kubectl get pods -l app=mysql -o jsonpath='{.items[0].metadata.name}'
   register: mysql_pod_name
   until: mysql_pod_name.stdout != ""
+  
+- name: Wait for MySQL to be ready
+  shell: kubectl exec {{ mysql_pod_name.stdout }} -- mysqladmin ping --silent
+  register: mysql_ping
+  until: mysql_ping.stdout != ""
+  retries: 10
+  delay: 10
 
 - name: Create admin inside DB
   shell: kubectl exec {{ mysql_pod_name.stdout }} -- mysql --user="admin" --password="admin" --database="ghost" --execute="update users set name='{{ ghost_user }}', password='{{ ghost_password }}', email='{{ ghost_email }}', status='active' where id=1;"

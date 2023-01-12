@@ -6,3 +6,4 @@
   gather_facts: false
   roles:
     - undeploy-ghost
+    - {role: undeploy-ghost-pv, when: delete_data is defined and delete_data == 'true'}

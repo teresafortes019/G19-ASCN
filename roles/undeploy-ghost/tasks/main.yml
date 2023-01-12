@@ -1,59 +1,17 @@
 ---
 - name: Undeploy MySQL service
   shell: kubectl delete service mysql-service
-#- name: Undeploy MySQL service
-#  kubernetes.core.k8s:
-#    api_version: v1
-#    kind: Service
-#    namespace: ascn-cluster
-#    name: mysql-service 
-#    state: absent
-#    wait: true
+
 
 - name: Undeploy MySQL Deployment
   shell: kubectl delete deployment mysql-deployment
-#- name: Undeploy MySQL Deployment
-#  kubernetes.core.k8s:
-#    api_version: v1
-#    kind: Deployment
-#    namespace: ascn-cluster
-#    name: mysql-deployment
-#    state: absent
-#    wait: true
 
-# Undeploy MySQL
-- name: Undeploy MySQL PVC
-  shell: kubectl delete pvc mysql-pv-claim
-#- name: Undeploy MySQL PVC
-#  kubernetes.core.k8s:
-#    api_version: v1
-#    kind: PersistentVolumeClaim
-#    namespace: ascn-cluster
-#    name: mysql-pv-claim
-#    state: absent
-#    wait: true
 
 - name: Undeploy Ghost Service
   shell: kubectl delete service ghost-service
-# Undeploy Ghost
-#- name: Undeploy Ghost service
-#  kubernetes.core.k8s:
-#    api_version: v1
-#    kind: Service
-#    namespace: ascn-cluster
-#    name: ghost-service
-#    state: absent
-#    continue_on_error: yes
-#    wait: true
+
 
 - name: Undeploy Ghost Deployment
   shell: kubectl delete deployment ghost-deployment
-#- name: Undeploy Ghost Deployment
-#  kubernetes.core.k8s:
-#    api_version: v1
-#    kind: Deployment
-#    namespace: ascn-cluster
-#    name: ghost-deployment
-#    state: absent
-#    wait: true
+
     
