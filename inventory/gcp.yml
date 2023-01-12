@@ -20,5 +20,5 @@ all:
 
   # MySQL variables
   ghost_user: ascn
-  ghost_password: ascn-123
+  ghost_password: \$2b\$10\$L8LzFZAwUt8HqOXyZFyRtOAWsaSfoqsgxY.OHcHffEplstiB1eRXy
   ghost_email: ascn@example.com

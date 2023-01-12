@@ -30,6 +30,6 @@
   until: mysql_pod_name.stdout != ""
 
 - name: Create admin inside DB
-  shell: kubectl exec {{ mysql_pod_name }} -- mysqladmin --user='admin' --password='admin' --database='ghost' --execute="update users set name='{{ ghost_user }}', password='{{ ghost_password }}', email='{{ ghost_email }}', status='active' where id=1;"
+  shell: kubectl exec {{ mysql_pod_name.stdout }} -- mysql --user="admin" --password="admin" --database="ghost" --execute="update users set name='{{ ghost_user }}', password='{{ ghost_password }}', email='{{ ghost_email }}', status='active' where id=1;"
   
 
