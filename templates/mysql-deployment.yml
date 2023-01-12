@@ -29,6 +29,8 @@ spec:
           value: admin
         - name: MYSQL_PASSWORD
           value: admin # Use Secret object in real usage
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: "yes"
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql

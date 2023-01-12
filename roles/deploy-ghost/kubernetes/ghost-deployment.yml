@@ -1,0 +1,37 @@
+---
+# Deployment for deploying Ghost
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-deployment
+  labels:
+    app: ghost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+      - name: ghost
+        image: ghost:5.14.1
+        env: #Mudar isto de acordo as specs do ghost  
+        - name: url
+          value: http://35.239.117.226:80/
+        #DB
+        - name: database__client
+          value: mysql
+        - name: database__connection__host
+          value: mysql-service
+        - name: database__connection__database
+          value: ghost
+        - name: database__connection__user
+          value: admin
+        - name: database__connection__password
+          value: admin
+        ports:
+        - containerPort: 2368

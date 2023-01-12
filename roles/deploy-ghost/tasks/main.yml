@@ -1,9 +1,35 @@
 ---
 
-- name: Ghost Deployment
-  shell: kubectl apply -f roles/deploy-ghost/templates/ghost-deployment.yml
-
 - name: Service Ghost
-  shell: kubectl apply -f roles/deploy-ghost/templates/ghost-service.yml
+  shell: kubectl apply -f roles/deploy-ghost/kubernetes/ghost-service.yml
 
+#Get service ip and update kubernetes deployment file
+- name: Get external service ip
+  shell: kubectl get services -l app=ghost -o jsonpath='{.items[0].status.loadBalancer.ingress[0].ip}'
+  register: ghost_ip
+  until: ghost_ip.stdout != ""
+  retries: 10
+  delay: 10
+
+- name: Update variable
+  set_fact:
+    ghost_ip: "{{ ghost_ip.stdout }}"
+
+- name: Update kubernetes deployment file
+  template:
+    src: ghost-deployment.yml
+    dest: roles/deploy-ghost/kubernetes/ghost-deployment.yml
+
+- name: Ghost Deployment
+  shell: kubectl apply -f roles/deploy-ghost/kubernetes/ghost-deployment.yml
+
+
+- name: Get MySQL Pod Name
+  shell: kubectl get pods -l app=mysql -o jsonpath='{.items[0].metadata.name}'
+  register: mysql_pod_name
+  until: mysql_pod_name.stdout != ""
+
+- name: Create admin inside DB
+  shell: kubectl exec {{ mysql_pod_name }} -- mysqladmin --user='admin' --password='admin' --database='ghost' --execute="update users set name='{{ ghost_user }}', password='{{ ghost_password }}', email='{{ ghost_email }}', status='active' where id=1;"
+  
 

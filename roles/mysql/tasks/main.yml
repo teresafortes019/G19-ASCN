@@ -1,11 +1,18 @@
 ---
 
 - name: MySQL PVC
-  shell: kubectl apply -f roles/mysql/templates/mysql-pvc.yml
+  shell: kubectl apply -f roles/mysql/kubernetes/mysql-pvc.yml
 
 - name: MySQL Deployment
-  shell: kubectl apply -f roles/mysql/templates/mysql-deployment.yml
+  shell: kubectl apply -f roles/mysql/kubernetes/mysql-deployment.yml
 
 - name: Service MySQL
-  shell: kubectl apply -f roles/mysql/templates/mysql-service.yml
+  shell: kubectl apply -f roles/mysql/kubernetes/mysql-service.yml
 
+- name: Get MySQL PersistentVolume
+  shell: kubectl get pv | grep pvc | awk '{print $1}'
+  register: mysql_pv
+  until: mysql_pv.stdout != ""
+
+- name: Change to Retain Policy
+  shell: kubectl patch pv {{ mysql_pv.stdout }} -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'

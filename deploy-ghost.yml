@@ -6,14 +6,6 @@
   roles:
     - mysql
 
-- name: Wait
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Wait for 10 seconds
-      wait_for:
-        timeout: 10
-
 - name: Deploy Ghost APP
   hosts: localhost
   gather_facts: false

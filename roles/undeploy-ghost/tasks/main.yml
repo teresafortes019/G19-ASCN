@@ -33,10 +33,6 @@
 #    state: absent
 #    wait: true
 
-# Undeploy MySQL
-- name: Undeploy MySQL PV
-  shell: kubectl delete pv mysql-pv-volume
-
 - name: Undeploy Ghost Service
   shell: kubectl delete service ghost-service
 # Undeploy Ghost

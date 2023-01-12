@@ -15,8 +15,10 @@ all:
 
 
   # APP variables
-  ghost_ip: <GHOST_SERVICE_IP>     # Needs to be updated
-  ghost_port: <GHOST_PORT>         # Needs to be updated
+  ghost_ip: 35.202.43.161    # Needs to be updated
+  ghost_port: 80         # Needs to be updated
 
-  # Additional variables
-  # ...
+  # MySQL variables
+  ghost_user: ascn
+  ghost_password: ascn-123
+  ghost_email: ascn@example.com
