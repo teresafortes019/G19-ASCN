@@ -1,0 +1,124 @@
+{
+  "displayName": "monitoring",
+  "mosaicLayout":
+    {
+      "columns": 12,
+      "tiles":
+        [
+          {
+            "height": 4,
+            "widget":
+              {
+                "title": "VM - CPU utilization",
+                "xyChart":
+                  {
+                    "chartOptions": { "mode": "COLOR" },
+                    "dataSets":
+                      [
+                        {
+                          "minAlignmentPeriod": "60s",
+                          "plotType": "LINE",
+                          "targetAxis": "Y1",
+                          "timeSeriesQuery":
+                            {
+                              "timeSeriesFilter":
+                                {
+                                  "aggregation":
+                                    {
+                                      "alignmentPeriod": "60s",
+                                      "perSeriesAligner": "ALIGN_MEAN",
+                                    },
+                                  "filter": 'metric.type="compute.googleapis.com/instance/cpu/utilization" resource.type="gce_instance"',
+                                  "secondaryAggregation":
+                                    { "alignmentPeriod": "60s" },
+                                },
+                            },
+                        },
+                      ],
+                    "timeshiftDuration": "0s",
+                    "yAxis": { "label": "y1Axis", "scale": "LINEAR" },
+                  },
+              },
+            "width": 6,
+          },
+          {
+            "height": 4,
+            "widget":
+              {
+                "title": "VM Ram Used [MEAN]",
+                "xyChart":
+                  {
+                    "chartOptions": { "mode": "COLOR" },
+                    "dataSets":
+                      [
+                        {
+                          "minAlignmentPeriod": "60s",
+                          "plotType": "LINE",
+                          "targetAxis": "Y1",
+                          "timeSeriesQuery":
+                            {
+                              "timeSeriesFilter":
+                                {
+                                  "aggregation":
+                                    {
+                                      "alignmentPeriod": "60s",
+                                      "perSeriesAligner": "ALIGN_MEAN",
+                                    },
+                                  "filter": 'metric.type="compute.googleapis.com/instance/memory/balloon/ram_used" resource.type="gce_instance"',
+                                  "secondaryAggregation":
+                                    { "alignmentPeriod": "60s" },
+                                },
+                            },
+                        },
+                      ],
+                    "timeshiftDuration": "0s",
+                    "yAxis": { "label": "y1Axis", "scale": "LINEAR" },
+                  },
+              },
+            "width": 6,
+            "xPos": 6,
+          },
+          {
+            "height": 4,
+            "widget":
+              {
+                "title": "Disk I/O time [MEAN]",
+                "xyChart":
+                  {
+                    "chartOptions": { "mode": "COLOR" },
+                    "dataSets":
+                      [
+                        {
+                          "minAlignmentPeriod": "60s",
+                          "plotType": "LINE",
+                          "targetAxis": "Y1",
+                          "timeSeriesQuery":
+                            {
+                              "timeSeriesFilter":
+                                {
+                                  "aggregation":
+                                    {
+                                      "alignmentPeriod": "60s",
+                                      "perSeriesAligner": "ALIGN_RATE",
+                                    },
+                                  "filter": 'metric.type="agent.googleapis.com/disk/io_time" resource.type="gce_instance"',
+                                  "secondaryAggregation":
+                                    {
+                                      "alignmentPeriod": "60s",
+                                      "perSeriesAligner": "ALIGN_MEAN",
+                                    },
+                                },
+                            },
+                        },
+                      ],
+                    "timeshiftDuration": "0s",
+                    "yAxis": { "label": "y1Axis", "scale": "LINEAR" },
+                  },
+              },
+            "width": 6,
+            "yPos": 4,
+          },
+        ],
+    },
+  "name": "projects/{{gcp_project}}/dashboards/monitoring",
+}
