@@ -4,7 +4,10 @@
   shell: kubectl apply -f roles/mysql/kubernetes/mysql-pvc.yml
 
 - name: MySQL Deployment
-  shell: kubectl apply -f roles/mysql/kubernetes/mysql-deployment.yml
+  shell: |
+    export PASSWORD={{ admin_password }}
+    envsubst < roles/mysql/kubernetes/mysql-deployment.yml | kubectl apply -f -
+    unset PASSWORD
 
 - name: Service MySQL
   shell: kubectl apply -f roles/mysql/kubernetes/mysql-service.yml

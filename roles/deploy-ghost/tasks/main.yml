@@ -45,5 +45,4 @@
 
 # Create Horizontal Pod Autoscaler
 - name: Create HPA
-  #shell: kubectl autoscale deployment ghost-deployment --cpu-percent=80 --min=2 --max=10
-  shell: kubectl create -f manifest/hpa.yml
+  shell: kubectl apply -f manifest/hpa.yml
