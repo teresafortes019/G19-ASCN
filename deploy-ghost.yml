@@ -13,3 +13,10 @@
     - secrets.yml
   roles:
     - deploy-ghost
+
+- name: Deploy Dashboard
+  hosts: localhost
+  roles:
+    - undeploy_monit
+    - deploy_monit
+

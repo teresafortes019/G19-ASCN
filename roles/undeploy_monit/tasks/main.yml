@@ -1,0 +1,8 @@
+- name: Check if the dashboard exists
+  shell: gcloud monitoring dashboards describe 'monitoring' --project {{ gcp_project }}
+  register: dashboard_exists
+  ignore_errors: true
+
+- name: Delete dashboard if it exists
+  shell: gcloud monitoring dashboards delete 'monitoring' --quiet
+  when: dashboard_exists.rc == 0

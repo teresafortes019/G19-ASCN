@@ -9,6 +9,46 @@
             "height": 3,
             "widget":
               {
+                "title": "[Ghost] Fração de Utilização de CPU",
+                "xyChart":
+                  {
+                    "chartOptions": { "mode": "COLOR" },
+                    "dataSets":
+                      [
+                        {
+                          "minAlignmentPeriod": "60s",
+                          "plotType": "LINE",
+                          "targetAxis": "Y1",
+                          "timeSeriesQuery":
+                            {
+                              "timeSeriesFilter":
+                                {
+                                  "aggregation":
+                                    {
+                                      "alignmentPeriod": "60s",
+                                      "crossSeriesReducer": "REDUCE_MEAN",
+                                      "groupByFields":
+                                        ['resource.label."project_id"'],
+                                      "perSeriesAligner": "ALIGN_MEAN",
+                                    },
+                                  "filter": 'metric.type="kubernetes.io/container/cpu/limit_utilization" resource.type="k8s_container" metadata.user_labels."app"="ghost"',
+                                  "secondaryAggregation":
+                                    { "alignmentPeriod": "60s" },
+                                },
+                            },
+                        },
+                      ],
+                    "timeshiftDuration": "0s",
+                    "yAxis": { "label": "y1Axis", "scale": "LINEAR" },
+                  },
+              },
+            "width": 6,
+            "yPos": 6,
+          },
+          {
+            "height": 3,
+            "widget":
+              {
                 "title": "Latência RTT 95º percentil",
                 "xyChart":
                   {
@@ -41,10 +81,10 @@
               },
             "width": 6,
             "xPos": 6,
-            "yPos": 4,
+            "yPos": 6,
           },
           {
-            "height": 4,
+            "height": 3,
             "widget":
               {
                 "title": "Utilização do CPU",
@@ -64,12 +104,9 @@
                                   "aggregation":
                                     {
                                       "alignmentPeriod": "60s",
-                                      "crossSeriesReducer": "REDUCE_MEAN",
-                                      "groupByFields":
-                                        ['resource.label."pod_name"'],
                                       "perSeriesAligner": "ALIGN_MEAN",
                                     },
-                                  "filter": 'metric.type="kubernetes.io/container/cpu/limit_utilization" resource.type="k8s_container"',
+                                  "filter": 'metric.type="compute.googleapis.com/instance/cpu/utilization" resource.type="gce_instance" resource.label."instance_id"="3060775276640047095"',
                                   "secondaryAggregation":
                                     { "alignmentPeriod": "60s" },
                                 },
@@ -148,8 +185,36 @@
                     "yAxis": { "label": "y1Axis", "scale": "LINEAR" },
                   },
               },
-            "width": 12,
-            "yPos": 7,
+            "width": 6,
+            "xPos": 6,
+            "yPos": 3,
+          },
+          {
+            "height": 2,
+            "widget":
+              {
+                "scorecard":
+                  {
+                    "sparkChartView": { "sparkChartType": "SPARK_LINE" },
+                    "timeSeriesQuery":
+                      {
+                        "timeSeriesFilter":
+                          {
+                            "aggregation":
+                              {
+                                "alignmentPeriod": "60s",
+                                "crossSeriesReducer": "REDUCE_MEAN",
+                                "perSeriesAligner": "ALIGN_MEAN",
+                              },
+                            "filter": 'metric.type="compute.googleapis.com/instance/memory/balloon/ram_used" resource.type="gce_instance"',
+                          },
+                      },
+                  },
+                "title": "Memória em Uso",
+              },
+            "width": 4,
+            "xPos": 8,
+            "yPos": 1,
           },
           {
             "height": 2,
@@ -174,7 +239,34 @@
                   },
                 "title": "VMs ativas",
               },
-            "width": 6,
+            "width": 4,
+            "yPos": 1,
+          },
+          {
+            "height": 2,
+            "widget":
+              {
+                "scorecard":
+                  {
+                    "sparkChartView": { "sparkChartType": "SPARK_LINE" },
+                    "timeSeriesQuery":
+                      {
+                        "timeSeriesFilter":
+                          {
+                            "aggregation":
+                              {
+                                "alignmentPeriod": "60s",
+                                "crossSeriesReducer": "REDUCE_MEAN",
+                                "perSeriesAligner": "ALIGN_MEAN",
+                              },
+                            "filter": 'metric.type="compute.googleapis.com/instance/memory/balloon/ram_used" resource.type="gce_instance"',
+                          },
+                      },
+                  },
+                "title": "Répicas",
+              },
+            "width": 4,
+            "xPos": 4,
             "yPos": 1,
           },
           {
@@ -186,48 +278,7 @@
               },
             "width": 12,
           },
-          {
-            "height": 3,
-            "widget":
-              {
-                "title": "Utilização da Memoria",
-                "xyChart":
-                  {
-                    "chartOptions": { "mode": "COLOR" },
-                    "dataSets":
-                      [
-                        {
-                          "minAlignmentPeriod": "60s",
-                          "plotType": "LINE",
-                          "targetAxis": "Y1",
-                          "timeSeriesQuery":
-                            {
-                              "timeSeriesFilter":
-                                {
-                                  "aggregation":
-                                    {
-                                      "alignmentPeriod": "60s",
-                                      "crossSeriesReducer": "REDUCE_MEAN",
-                                      "groupByFields":
-                                        ['resource.label."container_name"'],
-                                      "perSeriesAligner": "ALIGN_MEAN",
-                                    },
-                                  "filter": 'metric.type="kubernetes.io/container/memory/limit_utilization" resource.type="k8s_container"',
-                                  "secondaryAggregation":
-                                    { "alignmentPeriod": "60s" },
-                                },
-                            },
-                        },
-                      ],
-                    "timeshiftDuration": "0s",
-                    "yAxis": { "label": "y1Axis", "scale": "LINEAR" },
-                  },
-              },
-            "width": 6,
-            "xPos": 6,
-            "yPos": 1,
-          },
         ],
     },
-  "name": "projects/{{gcp_project}}/dashboards/monitoring",
+  "name": "projects/ascn-ghost-369310/dashboards/monitoring",
 }

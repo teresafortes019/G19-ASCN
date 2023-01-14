@@ -1,0 +1,14 @@
+- name: Check Dashboards
+  shell: gcloud monitoring dashboards list --filter="displayName='monitoring'"
+  register: result
+  retries: 10
+  delay: 10
+
+- name: Change File
+  template:
+    src:  templates/monitoring.yml
+    dest: roles/deploy_monit/monitoring.json
+
+- name: Create Dashboard
+  shell: "gcloud monitoring dashboards create --config-from-file=roles/deploy_monit/monitoring.json"
+  when: result.stdout == ""
