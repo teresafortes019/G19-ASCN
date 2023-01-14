@@ -28,7 +28,7 @@ spec:
         - name: MYSQL_USER
           value: admin
         - name: MYSQL_PASSWORD
-          value: admin # Use Secret object in real usage
+          value: "$PASSWORD" # Use Secret object in real usage
         - name: MYSQL_ALLOW_EMPTY_PASSWORD
           value: "yes"
         volumeMounts:
