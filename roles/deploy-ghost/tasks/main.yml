@@ -42,6 +42,8 @@
 - name: Create admin inside DB
   shell: kubectl exec {{ mysql_pod_name.stdout }} -- mysql --user="admin" --password="{{admin_password}}" --database="ghost" --execute="update users set name='{{ ghost_user }}', password='{{ ghost_password }}', email='{{ ghost_email }}', status='active' where id=1;"
   
+
 # Create Horizontal Pod Autoscaler
 - name: Create HPA
-  shell: kubectl autoscale deployment ghost-deployment --cpu-percent=80 --min=2 --max=10
+  #shell: kubectl autoscale deployment ghost-deployment --cpu-percent=80 --min=2 --max=10
+  shell: kubectl create -f manifest/hpa.yml

@@ -21,7 +21,7 @@ spec:
         image: ghost:5.14.1
         env: #Mudar isto de acordo as specs do ghost  
         - name: url
-          value: http://34.134.219.133:80/
+          value: http://34.27.222.29:80/
         #DB
         - name: database__client
           value: mysql

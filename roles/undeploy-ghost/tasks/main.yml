@@ -15,5 +15,5 @@
   shell: kubectl delete deployment ghost-deployment
 
 - name: Undeploy HPA
-  shell: kubectl delete horizontalpodautoscaler.autoscaling/ghost-deployment
+  shell: kubectl delete horizontalpodautoscaler.autoscaling/ghost-hpa
     
