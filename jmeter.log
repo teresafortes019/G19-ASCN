@@ -1,0 +1,39 @@
+2023-01-18 11:04:04,943 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2023-01-18 11:04:05,031 INFO o.a.j.JMeter: Loading user properties from: /usr/local/Cellar/jmeter/5.5/libexec/bin/user.properties
+2023-01-18 11:04:05,032 INFO o.a.j.JMeter: Loading system properties from: /usr/local/Cellar/jmeter/5.5/libexec/bin/system.properties
+2023-01-18 11:04:05,060 INFO o.a.j.JMeter: Copyright (c) 1998-2022 The Apache Software Foundation
+2023-01-18 11:04:05,060 INFO o.a.j.JMeter: Version 5.5
+2023-01-18 11:04:05,060 INFO o.a.j.JMeter: java.version=19.0.1
+2023-01-18 11:04:05,060 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2023-01-18 11:04:05,061 INFO o.a.j.JMeter: os.name=Mac OS X
+2023-01-18 11:04:05,061 INFO o.a.j.JMeter: os.arch=x86_64
+2023-01-18 11:04:05,061 INFO o.a.j.JMeter: os.version=13.1
+2023-01-18 11:04:05,061 INFO o.a.j.JMeter: file.encoding=UTF-8
+2023-01-18 11:04:05,061 INFO o.a.j.JMeter: java.awt.headless=null
+2023-01-18 11:04:05,061 INFO o.a.j.JMeter: Max memory     =1073741824
+2023-01-18 11:04:05,062 INFO o.a.j.JMeter: Available Processors =4
+2023-01-18 11:04:05,099 INFO o.a.j.JMeter: Default Locale=English (EN)
+2023-01-18 11:04:05,100 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2023-01-18 11:04:05,100 INFO o.a.j.JMeter: JMeterHome=/usr/local/Cellar/jmeter/5.5/libexec
+2023-01-18 11:04:05,100 INFO o.a.j.JMeter: user.dir  =/Users/teresafortes/Desktop/ASCN/G19-ASCN
+2023-01-18 11:04:05,101 INFO o.a.j.JMeter: PWD       =/Users/teresafortes/Desktop/ASCN/G19-ASCN
+2023-01-18 11:04:05,103 INFO o.a.j.JMeter: IP: 192.168.1.68 Name: Air-de-Teresa.Home FullName: air-de-teresa.home
+2023-01-18 11:04:05,160 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2023-01-18 11:04:06,846 INFO o.a.j.JMeterGuiLauncher: Setting LAF to: com.github.weisj.darklaf.DarkLaf:com.github.weisj.darklaf.theme.DarculaTheme
+2023-01-18 11:04:17,098 INFO o.j.r.JARSourceHTTP: Requesting https://jmeter-plugins.org/repo/?installID=mac_os_x-8aeb2396f0a8f0e1d7589b9183671430-gui
+2023-01-18 11:04:21,036 INFO o.j.r.PluginManager: Plugins Status: [jpgc-plugins-manager=1.7, jmeter-core=5.5, jmeter-ftp=5.5, jmeter-http=5.5, jmeter-jdbc=5.5, jmeter-jms=5.5, jmeter-junit=5.5, jmeter-java=5.5, jmeter-ldap=5.5, jmeter-mail=5.5, jmeter-mongodb=5.5, jmeter-native=5.5, jmeter-tcp=5.5, jmeter-components=5.5]
+2023-01-18 11:04:21,038 INFO o.j.r.PluginManagerMenuItem: Plugins Manager has upgrades: [jpgc-plugins-manager]
+2023-01-18 11:11:19,799 INFO o.a.j.s.FileServer: Default base='/Users/teresafortes/Desktop/ASCN/G19-ASCN'
+2023-01-18 11:11:19,806 INFO o.a.j.g.a.Load: Loading file: /Users/teresafortes/Desktop/ASCN/G19-ASCN/benchmarking/Ghost_Benchmarking.jmx
+2023-01-18 11:11:19,820 INFO o.a.j.s.FileServer: Set new base='/Users/teresafortes/Desktop/ASCN/G19-ASCN/benchmarking'
+2023-01-18 11:11:20,260 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2023-01-18 11:11:20,272 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2023-01-18 11:11:20,275 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2023-01-18 11:11:20,277 INFO o.a.j.s.SaveService: Loading file: /Users/teresafortes/Desktop/ASCN/G19-ASCN/benchmarking/Ghost_Benchmarking.jmx
+2023-01-18 11:11:20,485 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-01-18 11:11:20,485 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-01-18 11:11:20,485 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-01-18 11:11:20,485 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-01-18 11:11:20,486 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2023-01-18 11:11:20,486 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2023-01-18 11:11:20,836 INFO o.a.j.s.FileServer: Set new base='/Users/teresafortes/Desktop/ASCN/G19-ASCN/benchmarking'
